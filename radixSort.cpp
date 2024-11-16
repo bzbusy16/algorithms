@@ -16,7 +16,7 @@ vector<int> countingSort(vector<int> &nums, int bot, int top, int radix=1){
 void radixSort(vector<int> &nums){
     int m_num=INT_MIN;
     for(int i=0;i<nums.size();++i) m_num=max(m_num, abs(nums[i]));
-    for(int radix=1;radix<m_num;radix*=10){
+    for(int radix=1;radix<=m_num;radix*=10){    // 注意radix可能与m_num相等
         // countingSort稳定, 不会打乱那些对应数位为0的数的顺序
         // countingSort本身支持负数, 所以radixSort同样支持负数
         nums=countingSort(nums, -9, 9, radix);
@@ -24,7 +24,8 @@ void radixSort(vector<int> &nums){
 }
 
 int main(){
-    vector<int> nums={-21, -213, 552, 25, -8, 1, 0};
+    // vector<int> nums={-21, -213, 552, 25, -8, 1, 0};
+    vector<int> nums={1,10000000};
     radixSort(nums);
 
     for(int &num:nums) cout << num << " ";

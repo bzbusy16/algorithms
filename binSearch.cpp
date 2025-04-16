@@ -5,7 +5,7 @@ using namespace std;
 // 第一个大于tar的位置
 int binSearchLarger_upper(vector<int> &nums, int tar, int l, int r){
     if(l>=r) return l;  // 大于返回l
-    int mid=l+(r-l)/2;  // 大于向下取整
+    int mid=l+(r-l)/2;
     if(nums[mid]>tar) return binSearchLarger_upper(nums, tar, l, mid);  // nums[mid]>tar 符号对应
     else return binSearchLarger_upper(nums, tar, mid+1, r); // 总是else差1
 }
@@ -19,7 +19,7 @@ int binSearchLarger_lower(vector<int> &nums, int tar, int l, int r){
 // 第一个小于tar的位置
 int binSearchSmaller_upper(vector<int> &nums, int tar, int l, int r){
     if(l>=r) return r;      // 小于返回r
-    int mid=l+(r-l)/2+1;    // 小于向上取整
+    int mid=l+(r-l)/2+1;    // 小于向上加一
     if(nums[mid]<tar) return binSearchSmaller_upper(nums, tar, mid, r);
     else return binSearchSmaller_upper(nums, tar, l, mid-1);
 }
